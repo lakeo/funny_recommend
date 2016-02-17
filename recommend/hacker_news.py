@@ -18,7 +18,7 @@ def hrn():
     for a in articles:
         votes = a['like_number']
         hour_age = int( (time.time()-a['ctime']) / 3600)
-        score = calculate_score(votes,hour_age)
+        score = int(calculate_score(votes,hour_age) * 100000)
         db.insert(insert,a['id'],a['type'],score)
 
 def calculate_score(votes, item_hour_age, gravity=1.8):
